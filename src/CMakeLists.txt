@@ -1,4 +1,6 @@
+add_subdirectory(cpp)
 add_subdirectory(gui_qt)
+add_subdirectory(gui_algorithm)
 
 add_executable(intro main.cpp)
 target_link_libraries(
