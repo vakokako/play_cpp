@@ -17,9 +17,9 @@ include_directories(${Boost_INCLUDE_DIR})
 
 list(APPEND LIBRARIES xtl xtensor::use_xsimd)
 
-add_executable(main main.cpp)
-target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE ${LIBRARIES})
+add_executable(cpp cpp.cpp)
+# target_compile_features(main PRIVATE cxx_std_17)
+target_link_libraries(cpp PRIVATE project_warnings project_options ${LIBRARIES})
 
 
 add_executable(cpp20 cpp20.cpp)
@@ -27,13 +27,13 @@ target_compile_features(cpp20 PRIVATE cxx_std_20)
 target_link_libraries(cpp20 PRIVATE ${LIBRARIES})
 
 add_executable(benchmark benchmark.cpp)
-target_compile_features(benchmark PRIVATE cxx_std_17)
-target_link_libraries(benchmark PRIVATE ${LIBRARIES} benchmark::benchmark)
+# target_compile_features(benchmark PRIVATE cxx_std_17)
+target_link_libraries(benchmark PRIVATE project_warnings project_options ${LIBRARIES} benchmark::benchmark)
 
 list(APPEND TESTS test_layout tuple_return_test struct_return_test)
 foreach(TESTNAME ${TESTS})
     add_executable(${TESTNAME} ${TESTNAME}.cpp)
-    target_link_libraries(${TESTNAME} PRIVATE ${LIBRARIES} GTest::gtest GTest::gtest_main)
+    target_link_libraries(${TESTNAME} PRIVATE project_warnings project_options ${LIBRARIES} GTest::gtest GTest::gtest_main)
 endforeach()
 
 add_executable(valeri valeri.cpp)
