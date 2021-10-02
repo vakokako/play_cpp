@@ -41,6 +41,16 @@ int main()
         // fmt::print("v: {}\n", v);
         // fmt::print("res: {}\n", res);
     }
+    {auto v = std::vector{1, 2, 3, 4, 5, 6};
+
+    const auto res = v | ranges::transform([](int i) {
+                                     std::cout << i << "\n";
+                                     return i * 2;
+                                 })
+                                 | ranges::views::filter([](int i) { return i % 3 == 0; }) | ranges::to_vector;
+
+    fmt::print("v: {}\n", v);
+    fmt::print("res: {}\n", res);}
 }
 
 // #include <array>
