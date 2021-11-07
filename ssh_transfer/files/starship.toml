@@ -1,0 +1,91 @@
+add_newline = false
+
+format = """
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$git_branch\
+$character\
+"""
+right_format = """
+$username\
+$hostname\
+$shlvl\
+$directory\
+$docker_context\
+$cmake\
+$conda\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+$jobs\
+$battery\
+$status\
+$time\
+$shell\
+"""
+
+
+# red="#D30102"
+# yellow="#DDA741"
+# orange="#FF4C34"
+# cyan="#00CFA8"
+# white="#FFFED9"
+# dim="#6C6C6A"
+# background="#00363F"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) 📂 "
+truncation_length = 10
+truncate_to_repo = false
+truncation_symbol = ".../"
+
+[character]
+success_symbol = "[λ](bold #FF4C34)"
+error_symbol = "[λ](bold #FF4C34)"
+
+[git_branch]
+format = "[\\(](bold #FF4C34)[$branch](bold #DDA741)[\\) ](bold #FF4C34)"
+
+[git_status]
+format = '([$conflicted$modified$renamed$deleted$untracked$staged$ahead_behind$stashed]($style))'
+style = "bold purple"
+
+stashed = "[ ^](bold #FFFED9)"
+conflicted = "="
+staged = "[ ▴](bold #00CFA8)" # +
+modified = "[*](bold #FFFED9)" # *
+renamed = "[»](bold #FFFED9)" # »
+deleted = "[✘](bold #FFFED9)" # ✘
+untracked = "[?](bold #FFFED9)" # ?
+
+ahead = "[ ⇡${count}](bold #D30102)"
+diverged = "[ ⇕⇡${ahead_count}⇣${behind_count}](bold #D30102)"
+behind = "[ ⇣${count}](bold #D30102)"
+
+[memory_usage]
+threshold = 50
+disabled = true
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "bold #6C6C6A"
+
+[status]
+disabled = false
+
+[cmake]
+disabled = true
+
+# [cmd_duration]
+# show_notifications = true
+# min_time_to_notify = 5_000
+
+# [env_var.USER]
+# default = "unknown user"
+
+[hostname]
+ssh_only = false
